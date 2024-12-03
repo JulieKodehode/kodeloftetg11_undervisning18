@@ -15,35 +15,67 @@ Se på array av objects som heter fontenehus
 4. lag en a link i HTML med en href som inneholder nettsiden til Fontenehuset Trondheim
 */
 
+// Oppgave 1:
 const tvShows = [
-  'The last of us',
-  'The umbrella academy',
-  'The Wire',
-  'Game of thrones',
-  'Silo',
+  "The last of us",
+  "The umbrella academy",
+  "The Wire",
+  "Game of thrones",
+  "Silo",
 ];
 
-console.log(tvShows.indexOf('The Wire'));
+console.log(tvShows);
+console.log(tvShows[3]);
+const task1 = document.querySelector("#task1");
+task1.textContent = tvShows[3];
 
-let addBtn = document.querySelector('#addBtn');
-let removeBtn = document.querySelector('#removeBtn');
-let liste = document.querySelector('#liste');
+//
+//
 
-let handleliste = ['melk', 'brød', 'såpe', 'egg'];
+// Fetch elements from HTML
+const addButton = document.querySelector("#addButton");
+const removeButton = document.querySelector("#removeButton");
+const displayList = document.querySelector("#displayList");
 
-addBtn.addEventListener('click', function (e) {
-  e.preventDefault();
-  let input = document.querySelector('#input').value;
-  handleliste.push(input);
-  liste.textContent = handleliste;
+// Create an starting array
+const shoppingList = ["melk", "brød", "såpe", "egg"];
+
+// Viewing the array on the site before changes
+displayList.textContent = shoppingList;
+
+// Adding a 'addButton' and using array method .push() to add an item last in the array that will be viewed on site.
+addButton.addEventListener("click", function (event) {
+  event.preventDefault();
+  let inputField = document.querySelector("#inputField").value;
+  shoppingList.push(inputField);
+  displayList.textContent = shoppingList;
 });
 
-removeBtn.addEventListener('click', function (e) {
-  e.preventDefault();
-  handleliste.pop();
-  liste.textContent = handleliste;
+// Adding a 'removeButton' and using array method .pop() to remove the last item in the array that will be viewed on site.
+removeButton.addEventListener("click", function (event) {
+  event.preventDefault();
+  shoppingList.pop();
+  displayList.textContent = shoppingList;
 });
 
+//
+//
+
+// OBJECT EXAMPLE
+const person = {
+  name: "Frank",
+  city: "Oslo",
+  age: 40,
+  isMarried: false
+};
+
+console.log(person.name);
+console.log(person.isMarried);
+
+//
+//
+
+// ARRAY WITH OBJECTS
 const fontenehus = [
   {
     navn: 'Fontenehuset Oslo Øst',
@@ -70,4 +102,31 @@ const fontenehus = [
     adresse: 'Lihauggata 8B, 6003 Ålesund',
     nettside: 'https://www.fontenehuset-alesund.no/',
   },
+  //OPPGAVE 2:
+  {
+    navn: "Fontenehuset Bærum",
+    adresse: "Industriveien 2, 1337 Sandvika",
+    nettside: "https://www.fontenehuset-baerum.no/"
+  }
 ];
+
+// OPPGAVE 2:
+console.log(fontenehus);
+console.log(fontenehus[4]);
+console.log(fontenehus[0].adresse);
+console.log(fontenehus[5])
+
+// Fetch a element fra HTML
+const task2 = document.querySelector("#task2");
+task2.href = fontenehus[2].nettside;
+
+
+
+// Alternativ 2 til oppgave 2:
+// Create a new element in jS
+const task2Alternative2 = document.createElement("a");
+task2Alternative2.textContent = "Fontenehuset Trondheim"
+task2Alternative2.href = fontenehus[2].nettside;
+
+const body = document.querySelector("body");
+body.appendChild(task2Alternative2);
